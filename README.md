@@ -6,7 +6,7 @@
 
 ## Documentation
 
-- [For this template](https://github.com/billwing/vue-ssr-demo): learn more with the vue-ssr-demo
+- [For this template](https://github.com/JZ-FE/vue-ssr-demo): learn more with the vue-ssr-demo
 - [For Vue 2.0](http://vuejs.org/guide/): general information about how to work with Vue, not specific to this template
 
 ## Usage
@@ -15,7 +15,7 @@ This is a project template for [vue-cli](https://github.com/vuejs/vue-cli). **It
 
 ``` bash
 $ npm install -g vue-cli
-$ vue init billwing/vue-ssr-template my-project
+$ vue init JZ-FE/vue-ssr-template my-project
 $ cd my-project
 $ npm install
 $ npm run dev
