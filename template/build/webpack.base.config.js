@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const vueConfig = require('./vue-loader.config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
@@ -42,11 +43,12 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
+        options: vueConfig,
+        /*options: {
           compilerOptions: {
             preserveWhitespace: false
           }
-        }
+        }*/
       },
       {
         test: /\.js$/,
@@ -84,7 +86,7 @@ module.exports = {
   },
   plugins: isProd
     ? [
-        new VueLoaderPlugin(),
+        // new VueLoaderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
           compress: { warnings: false },
           sourceMap: true
@@ -95,7 +97,7 @@ module.exports = {
         })
       ]
     : [
-        new VueLoaderPlugin(),
+        // new VueLoaderPlugin(),
         new FriendlyErrorsPlugin()
       ]
 }
