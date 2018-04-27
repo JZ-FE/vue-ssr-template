@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ name }}</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{{ name }}" data-vue-meta="true">
+    <meta name="description" content="{{ description }}" data-vue-meta="true">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link rel="apple-touch-icon" sizes="120x120" href="/{{ name }}/public/logo.png">
+    <link rel="shortcut icon" sizes="48x48" href="/{{ name }}/public/logo.png">
+    <link rel="manifest" href="/{{ name }}/manifest.json">
+    <style>
+      .lspinner{position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);width:120px;height:120px;font-size:0;text-align:center}.lspinner>div{display:inline-block;width:14px;height:100%;margin:0 8px 0 0;background:#ddd;-webkit-animation:sk-stretchdelay 1.2s infinite ease-in-out;animation:sk-stretchdelay 1.2s infinite ease-in-out}.lspinner .rect2{-webkit-animation-delay:-1.1s;animation-delay:-1.1s}.lspinner .rect3{-webkit-animation-delay:-1s;animation-delay:-1s}.lspinner .rect4{-webkit-animation-delay:-.9s;animation-delay:-.9s}.lspinner .rect5{-webkit-animation-delay:-.8s;animation-delay:-.8s}@-webkit-keyframes sk-stretchdelay{0%,40%,to{-webkit-transform:scaleY(.4)}20%{-webkit-transform:scaleY(1)}}@keyframes sk-stretchdelay{0%,40%,to{transform:scaleY(.4);-webkit-transform:scaleY(.4)}20%{transform:scaleY(1);-webkit-transform:scaleY(1)}}
+    </style>
+    <script>
+      {{#if_not hackernews}}
+      // css rem
+      (function(b,c){var d=b.documentElement,isIos=navigator.userAgent.match(/iphone|ipod|ipad/gi),dpr=Math.min(c.devicePixelRatio,3),scale=1/dpr,resizeEvent='orientationchange'in window?'orientationchange':'resize';d.dataset.dpr=dpr;var e=b.createElement('meta');e.name='viewport';e.content='initial-scale='+scale+',maximum-scale='+scale+',user-scalable=no';d.firstElementChild.appendChild(e);var f=function(){var a=d.clientWidth;if(a/dpr>640){a=640*dpr}d.style.fontSize=20*(a/750)+'px'};f();if(!b.addEventListener)return;c.addEventListener(resizeEvent,f,false)})(document,window);
+      {{/if_not}}
+    </script>
+  </head>
+  <body>
+    <!--vue-ssr-outlet-->
+    <div class="lspinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>
+  </body>
+</html>

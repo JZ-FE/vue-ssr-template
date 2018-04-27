@@ -1,0 +1,150 @@
+@import "./reset";
+@import "./animate";
+
+$imgPath: $imgPath3;
+
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+  font: px2rem(26) $font-cn;
+  color: $gray-dark;
+  background-color: $bg-color;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+  color: $link-color;
+}
+
+input,
+textarea {
+  box-sizing: border-box;
+}
+
+.hide {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.lspinner {
+  display: none;
+}
+
+.wrapper {
+  @include size(100%, 100%);
+
+  overflow: auto;
+}
+
+.flex-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-flow {
+  flex-flow: row wrap;
+}
+
+.flex-middle {
+  align-items: center;
+  justify-content: center;
+}
+
+.red {
+  color: $red;
+}
+
+.green {
+  color: $green;
+}
+
+.blue {
+  color: $primary;
+}
+
+.white {
+  color: #fff;
+}
+
+.bgw {
+  background-color: #fff;
+}
+
+img.avatar,
+.avatar img {
+  @include round-avatar(60);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .2s ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.view-in-enter-active,
+.view-out-leave-active {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding-top: px2rem($headerHeight);
+  -webkit-animation-duration: .3s;
+  animation-duration: .3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.view-in-enter-active {
+  -webkit-animation-name: inRight;
+  animation-name: inRight;
+}
+
+.view-out-leave-active {
+  -webkit-animation-name: outLeft;
+  animation-name: outLeft;
+}
+
+{{#if_not hackernews}}
+.app-wrap {
+  height: 100%;
+
+  &.app-head {
+    $headHeight: px2rem($headerHeight);
+
+    .container {
+      height: calc(100% - #{$headHeight});
+    }
+  }
+
+  .app-view {
+    height: 100%;
+  }
+
+  .container {
+    overflow-y: auto;
+    height: 100%;
+  }
+}
+{{/if_not}}

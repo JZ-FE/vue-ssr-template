@@ -1,0 +1,16 @@
+@function remVal($px) {
+  @if unitless($px) {
+    @return $px * $designWidth / $designWidth / 20 + rem;
+  } @else {
+    @return $px;
+  }
+}
+@function px2rem($values) {
+  $list: ();
+  @each $value in $values {
+    @if (type-of($value) == "number") {
+      $list: append($list, remVal($value));
+    }
+  }
+  @return $list();
+}

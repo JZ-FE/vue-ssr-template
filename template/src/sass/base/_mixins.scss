@@ -1,0 +1,149 @@
+@mixin clearfix {
+  zoom:1;
+
+  &:after{
+    display:block;
+    clear:both;
+    content:"";
+    visibility:hidden;
+    height:0;
+  }
+}
+@mixin block-center {
+  display: block;
+  margin: 0 auto;
+}
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+@mixin absolute-center-size($width, $height: $width) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: inherit;
+  transform: inherit;
+  width: px2rem($width);
+  height: px2rem($height);
+  margin-top: px2rem(- $height / 2);
+  margin-left: px2rem(- $width / 2);
+};
+@mixin horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@mixin size($width, $height: $width) {
+  width: px2rem($width);
+  height: px2rem($height);
+}
+@mixin line-height($height) {
+  height: px2rem($height);
+  line-height: px2rem($height);
+}
+@mixin ellipsis($width: 100%, $display: inline-block) {
+  display: $display;
+  max-width: $width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+@mixin background($img, $color: transparent, $left: 50%, $top: 50%) {
+  background: $color url($imgPath + $img) $left $top no-repeat;
+}
+@mixin background-image($img) {
+  background-image: url($imgPath + $img);
+}
+@mixin background-cover($img, $size: 100% 100%) {
+  background: url($imgPath + $img) 50% 50% no-repeat;
+  background-size: $size;
+}
+@mixin background-center($img, $width, $height) {
+  width: px2rem($width);
+  height: px2rem($height);
+  margin: 0 auto;
+  background: url($imgPath + $img) 50% 50% no-repeat;
+  background-size: 100% 100%;
+}
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  animation: #{$str};
+}
+@mixin radial-gradient($color1, $color2) {
+  background: -webkit-radial-gradient(circle, $color1, $color2);
+  background: radial-gradient(circle, $color1, $color2);
+}
+@mixin linear-gradient($color1, $color2, $angle: 90deg) {
+  background: -webkit-linear-gradient($angle, $color2 0%, $color1 50%, $color2 100%);
+  background: linear-gradient($angle, $color2 0%, $color1 50%, $color2 100%);
+}
+@mixin linear-gradient2($color1, $color2, $angle: 125deg) {
+  background: -webkit-linear-gradient($angle, $color1 0%, $color2 100%);
+  background: linear-gradient($angle, $color1 0%, $color2 100%);
+}
+@mixin round-avatar($size) {
+  width: px2rem($size);
+  height: px2rem($size);
+  vertical-align: middle;
+  border-radius: 50%;
+}
+@mixin line-top($color: $border-color) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  content: " ";
+  height: 1px;
+  color: $color;
+  border-top: 1px solid $color;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+}
+@mixin line-bottom($color: $border-color) {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: " ";
+  height: 1px;
+  color: $color;
+  border-bottom: 1px solid $color;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+}
+@mixin line-left($color: $border-color) {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: " ";
+  width: 1px;
+  color: $color;
+  border-left: 1px solid $color;
+  transform-origin: 0 0;
+  transform: scaleX(0.5);
+}
+@mixin line-right($color: $border-color) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  content: " ";
+  width: 1px;
+  color: $color;
+  border-right: 1px solid $color;
+  transform-origin: 100% 0;
+  transform: scaleX(0.5);
+}
