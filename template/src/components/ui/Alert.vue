@@ -59,6 +59,7 @@
 
       onClose () {
         this.show = false
+        if (this.btnCancel) this.btnCancel()
       },
     },
   }

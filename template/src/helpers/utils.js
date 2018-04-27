@@ -81,6 +81,16 @@ export default {
     }
   },
 
+  // Show Confirm
+  showConfirm (msg, confirm = () => {}, cancel = () => {}) {
+    this.uiAlert({
+      content: msg,
+      cancel: true,
+      btnConfirm: () => confirm(),
+      btnCancel: () => cancel(),
+    })
+  },
+
   // UI Toast
   uiToast (msg) {
     if (!msg) return

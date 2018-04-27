@@ -56,7 +56,7 @@ if (isProd) {
     templatePath,
     (bundle, options) => {
       renderer = createRenderer(bundle, options)
-    },
+    } // eslint-disable-line
   )
 }
 
