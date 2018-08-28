@@ -72,11 +72,21 @@ module.exports = {
                   loader: 'css-loader',
                   options: { minimize: true }
                 },
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                    plugins: [
+                      require('autoprefixer')({
+                        browsers: ['last 3 versions', 'iOS >= 8', 'Android >= 4']
+                      })
+                    ]
+                  }
+                },
                 'sass-loader'
               ],
               fallback: 'vue-style-loader'
             })
-          : ['vue-style-loader', 'css-loader', 'sass-loader']
+          : ['vue-style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
       },
     ]
   },
