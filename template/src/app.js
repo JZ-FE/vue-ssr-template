@@ -1,7 +1,4 @@
 import Vue from 'vue'
-import App from './App.vue'
-import createStore from './store'
-import createRouter from './router'
 import { sync } from 'vuex-router-sync'
 import * as filters from 'helpers/filters'
 import 'helpers/directives'
@@ -16,6 +13,10 @@ import Toast from 'plugins/toast'
 import Alert from 'plugins/alert'
 import Share from 'plugins/share'
 import Image from 'plugins/image'
+
+import App from './App.vue'
+import createStore from './store'
+import createRouter from './router'
 
 Vue.use(Meta)
 Vue.use(Cookie)

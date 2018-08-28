@@ -49,7 +49,8 @@ export default function createAPI (config = {}) {
     if (status === 500) {
       Utils.uiAlert('网络错误')
       return []
-    } else if (!data) {
+    }
+    if (!data) {
       Utils.uiAlert('数据异常')
       return []
     }
