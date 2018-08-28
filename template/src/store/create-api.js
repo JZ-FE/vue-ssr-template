@@ -1,11 +1,10 @@
 import axios from 'axios'
 import Utils from 'utils'
-import _ from 'lodash'
 
 export default function createAPI (config = {}) {
   let options = config
 
-  if (_.isString(options)) options = { url: options }
+  if (Utils._.isString(options)) options = { url: options }
 
   const defaults = {
     method: 'get',
@@ -27,7 +26,7 @@ export default function createAPI (config = {}) {
     validateStatus: null,
   }
 
-  options = _.assign(defaults, options)
+  options = Utils._.assign(defaults, options)
 
   const { store } = Utils.init()
   const state = store ? store.state : {}
