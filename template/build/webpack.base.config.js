@@ -1,13 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
-const vueConfig = require('./vue-loader.config')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
-const isProd = process.env.NODE_ENV === 'production'
+const NODE_ENV = process.env.NODE_ENV || 'development'
+const isProd = NODE_ENV === 'production'
 
 module.exports = {
+  mode: NODE_ENV,
   devtool: isProd
     ? '#source-map'
     : '#cheap-module-source-map',
@@ -43,12 +44,11 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueConfig,
-        /*options: {
+        options: {
           compilerOptions: {
             preserveWhitespace: false
           }
-        }*/
+        }
       },
       {
         test: /\.js$/,
@@ -65,28 +65,28 @@ module.exports = {
       },
       {
         test: /\.scss?$/,
-        use: isProd
-          ? ExtractTextPlugin.extract({
-              use: [
-                {
-                  loader: 'css-loader',
-                  options: { minimize: true }
-                },
-                {
-                  loader: 'postcss-loader',
-                  options: {
-                    plugins: [
-                      require('autoprefixer')({
-                        browsers: ['last 3 versions', 'iOS >= 8', 'Android >= 4']
-                      })
-                    ]
-                  }
-                },
-                'sass-loader'
-              ],
-              fallback: 'vue-style-loader'
-            })
-          : ['vue-style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+        oneOf: [
+          {
+            use: [
+              'vue-style-loader',
+              {
+                loader: 'css-loader',
+                options: { minimize: isProd }
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  plugins: [
+                    require('autoprefixer')({
+                      browsers: ['last 3 versions', 'iOS >= 8', 'Android >= 4']
+                    })
+                  ]
+                }
+              },
+              'sass-loader'
+            ]
+          }
+        ]
       },
     ]
   },
@@ -94,20 +94,11 @@ module.exports = {
     maxEntrypointSize: 300000,
     hints: isProd ? 'warning' : false
   },
-  plugins: isProd
-    ? [
-        // new VueLoaderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-          compress: { warnings: false },
-          sourceMap: true
-        }),
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new ExtractTextPlugin({
-          filename: 'common.[chunkhash].css'
-        })
-      ]
-    : [
-        // new VueLoaderPlugin(),
-        new FriendlyErrorsPlugin()
-      ]
+  plugins: [
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'common.[chunkhash].css'
+    }),
+    ... isProd ? [] : [ new FriendlyErrorsPlugin() ]
+  ]
 }
