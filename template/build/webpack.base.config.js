@@ -10,7 +10,7 @@ const isProd = NODE_ENV === 'production'
 module.exports = {
   mode: NODE_ENV,
   devtool: isProd
-    ? '#source-map'
+    ? false
     : '#cheap-module-source-map',
   output: {
     path: path.resolve(__dirname, '../dist2'),
