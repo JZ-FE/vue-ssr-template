@@ -114,6 +114,15 @@ export default {
     }
   },
 
+  // Get URL protocol
+  getProtocol () {
+    let protocol = 'http:'
+
+    if (this.isWin()) ({ protocol } = window.location)
+
+    return protocol
+  },
+
   // Get URL param
   getUrlParam (name) {
     const regex = new RegExp(`(^|&)${name}=([^&]*)(&|$)`)
