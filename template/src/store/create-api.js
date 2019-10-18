@@ -65,7 +65,9 @@ export default function createAPI (config = {}) {
 
     if (code === 1) {
       return response
-    } else if (options.showAlert) {
+    }
+
+    if (options.showAlert) {
       Utils.uiAlert(msg)
     }
 
