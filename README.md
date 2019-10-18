@@ -15,7 +15,7 @@ This is a project template for [vue-cli](https://github.com/vuejs/vue-cli). **It
 
 ``` bash
 $ npm install -g vue-cli
-$ vue init JZ-FE/vue-ssr-template#v1.0.0 my-project
+$ vue init JZ-FE/vue-ssr-template my-project
 $ cd my-project
 $ npm install
 $ npm run dev
