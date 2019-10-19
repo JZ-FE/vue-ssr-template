@@ -39,6 +39,8 @@ module.exports = {
     'arrow-parens': 0,
     // allow async-await
     'generator-star-spacing': 0,
+    'comma-dangle': 0,
+    'prefer-promise-reject-errors': 0,
     {{/if_eq}}
     {{#if_eq lintConfig "airbnb"}}
     'import/first': ['error', 'never'],
